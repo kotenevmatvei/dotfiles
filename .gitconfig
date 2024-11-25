@@ -1,0 +1,10 @@
+[init]
+	defaultBranch = main
+[user]
+	email = kotenev.matvei@gmail.com
+	name = Matvei Kotenev
+[credential]
+	helper = store
+[alias]
+	ll = log --oneline
+	cm = commit -am
