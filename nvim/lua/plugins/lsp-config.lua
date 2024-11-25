@@ -59,6 +59,7 @@ return {
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
       vim.keymap.set("n", "<leader>do", vim.lsp.buf.document_symbol, {})
+      vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {})
     end,
   },
 }
