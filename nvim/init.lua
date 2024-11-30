@@ -1,4 +1,8 @@
 vim.g.mapleader = " "
+-- Enable absolute line numbers
+vim.opt.number = true
+-- Enable relative line numbers
+vim.opt.relativenumber = true
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
