@@ -1,0 +1,3 @@
+return {
+  "jiangxincode/mpi.vim"
+}
