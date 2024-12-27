@@ -9,7 +9,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "pyright", "clangd", "ruff", "jedi_language_server" },
+        ensure_installed = { "lua_ls", "pyright", "clangd", "ruff", "jedi_language_server", "cssls"},
       })
     end,
   },
@@ -17,6 +17,7 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       local lspconfig = require("lspconfig")
+      lspconfig.cssls.setup({})
       lspconfig.lua_ls.setup({ capabilities = capabilities })
       lspconfig.pyright.setup({
         settings = {
@@ -35,6 +36,7 @@ return {
       lspconfig.jedi_language_server.setup({
         on_attach = function(client)
           client.server_capabilities.hoverProvider = true
+          client.server_capabilities.renameProvider = false
         end,
         capabilities = capabilities,
       })
