@@ -2,6 +2,10 @@
 vim.opt.number = true
 -- Enable relative line numbers
 vim.opt.relativenumber = true
+-- disable showmode, since already visible in lualine
+vim.opt.showmode = false
+-- and remove the unnecessary space
+vim.opt.cmdheight = 0
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
