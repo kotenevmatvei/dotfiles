@@ -143,7 +143,7 @@ return {
 		require("obsidian").setup(opts)
 
 		-- Set conceallevel FOR MARKDOWN BUFFERS ONLY
-		vim.opt.conceallevel = 1
+		vim.opt.conceallevel = 0
 
 		local client = require("obsidian").get_client()
 		vim.keymap.set("n", "<leader>n", ":ObsidianNew<CR>")
