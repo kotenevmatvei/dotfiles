@@ -23,22 +23,54 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 		config = function()
-			vim.keymap.set("n", "<Leader>dc", function()
-				require("dap").continue()
-			end)
-			vim.keymap.set("n", "<Leader>db", function()
-				require("dap").toggle_breakpoint()
-			end)
-			vim.keymap.set("n", "<F10>", function()
-				require("dap").step_over()
-			end)
-			vim.keymap.set("n", "<F11>", function()
-				require("dap").step_into()
-			end)
-			vim.keymap.set("n", "<F12>", function()
-				require("dap").step_out()
-			end)
+			local dap = require("dap")
+
+			-- Keymaps
+			vim.keymap.set("n", "<Leader>dc", function() dap.continue() end)
+			vim.keymap.set("n", "<Leader>db", function() dap.toggle_breakpoint() end)
+			vim.keymap.set("n", "<F10>", function() dap.step_over() end)
+			vim.keymap.set("n", "<F11>", function() dap.step_into() end)
+			vim.keymap.set("n", "<F12>", function() dap.step_out() end)
 			vim.keymap.set("n", "<C-t>", ":DapTerminate<CR>", {})
+
+			-----------------------------------------------------
+			-- C / C++ Debugging Setup (cpptools)
+			-----------------------------------------------------
+			-- Dynamically get path to cpptools executable installed by Mason
+			local cpptools_path = vim.fn.stdpath("data") .. "/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7"
+
+			-- Define the adapter
+			dap.adapters.cppdbg = {
+				id = "cppdbg",
+				type = "executable",
+				command = cpptools_path,
+			}
+
+			-- Define the launch configurations
+			dap.configurations.c = {
+				{
+					name = "Launch C executable",
+					type = "cppdbg",
+					request = "launch",
+					program = function()
+						-- Prompts you to input the path to the compiled binary
+						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+					end,
+					cwd = "${workspaceFolder}",
+					stopAtEntry = true,
+					MIMode = "gdb", -- Usually gdb on Linux
+					setupCommands = {
+						{
+							text = "-enable-pretty-printing",
+							description = "enable pretty printing",
+							ignoreFailures = false,
+						},
+					},
+				},
+			}
+
+			-- Re-use the same configuration for C++
+			dap.configurations.cpp = dap.configurations.c
 		end,
 	},
 	{
@@ -50,7 +82,8 @@ return {
 			"nvim-neotest/nvim-nio",
 		},
 		config = function(_, opts)
-			local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+			-- Use vim.fn.expand to properly evaluate the tilde (~) into the home directory path
+			local path = vim.fn.expand("~/.local/share/nvim/mason/packages/debugpy/venv/bin/python")
 			require("dap-python").setup(path)
 		end,
 	},

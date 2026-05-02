@@ -7,6 +7,9 @@ vim.opt.showmode = false
 -- and remove the unnecessary space
 vim.opt.cmdheight = 0
 
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
