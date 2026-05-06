@@ -125,8 +125,8 @@ return {
 		-- This table defines callbacks that are triggered on certain events.
 		callbacks = {
 			-- This callback is triggered right before a note is written to disk.
-			---@param client obsidian.Client
-			---@param note obsidian.Note
+			-- -@param client obsidian.Client
+			-- -@param note obsidian.Note
 			pre_write_note = function(client, note)
 				-- This function will find the 'last_updated' field in the note's
 				-- frontmatter and update it with the current timestamp.
@@ -146,8 +146,5 @@ return {
 		vim.opt.conceallevel = 0
 
 		local client = require("obsidian").get_client()
-		vim.keymap.set("n", "<leader>n", ":ObsidianNew<CR>")
-		vim.keymap.set("n", "<C-p>", ":ObsidianQuickSwitch<CR>")
-		vim.keymap.set("n", "<leader>d", ":ObsidianNewFromTemplate<CR>")
 	end,
 }
