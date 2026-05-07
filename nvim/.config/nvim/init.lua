@@ -57,6 +57,14 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 
+-- Update everything
+vim.keymap.set("n", "<leader>uu", function()
+    vim.cmd("Lazy update")
+    vim.cmd("MasonUpdate")
+    vim.cmd("TSUpdate")
+    print("Updating Plugins, Mason tools, and Treesitter parsers...")
+end, { desc = "Update All Neovim Dependencies" })
+
 -- Add this to your init.lua
 vim.api.nvim_create_autocmd("BufWritePost", {
     pattern = "/Users/matveikotenev/Documents/obsidian*",

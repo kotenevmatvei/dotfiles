@@ -47,14 +47,6 @@ return {
       -- IMPORTANT: REMOVE ALL lspconfig.<server>.setup() calls from here
       -- The setup is now handled by mason-lspconfig.
 
-      -- Your keymaps and autocommands are safe to keep here
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-      vim.keymap.set("n", "<leader>do", vim.lsp.buf.document_symbol, {})
-      vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {})
-      vim.keymap.set("n", "<leader>i", vim.lsp.buf.implementation, {})
-
       -- Any LspAttach autocommands also belong here
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
