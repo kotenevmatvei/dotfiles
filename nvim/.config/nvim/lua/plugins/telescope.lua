@@ -7,25 +7,25 @@ return {
 			local builtin = require("telescope.builtin")
 			-- vim.keymap.set('n', '<C-p>', builtin.find_files, {})
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-			vim.keymap.set("n", "<leader>ff", function()
-				if vim.bo.filetype == "neo-tree" then
-					-- If it is, jump to the previous window (your main editor)
-					vim.cmd("wincmd p")
-				end
-				builtin.find_files({
-					prompt_title = "Find Files",
-					-- hidden = true, -- This includes hidden files and directories
-					find_command = {
-						"rg",
-						"--files",
-						"--no-ignore",
-						"--glob",
-						"!.git/*",
-						"--glob",
-						"!*.o",
-					},
-				})
-			end)
+			-- vim.keymap.set("n", "<leader>ff", function()
+			-- 	if vim.bo.filetype == "neo-tree" then
+			-- 		-- If it is, jump to the previous window (your main editor)
+			-- 		vim.cmd("wincmd p")
+			-- 	end
+			-- 	builtin.find_files({
+			-- 		prompt_title = "Find Files",
+			-- 		-- hidden = true, -- This includes hidden files and directories
+			-- 		find_command = {
+			-- 			"rg",
+			-- 			"--files",
+			-- 			"--no-ignore",
+			-- 			"--glob",
+			-- 			"!.git/*",
+			-- 			"--glob",
+			-- 			"!*.o",
+			-- 		},
+			-- 	})
+			-- end)
 		end,
 	},
 	{
