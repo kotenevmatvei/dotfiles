@@ -30,5 +30,14 @@ vim.keymap.set("n", "<leader>do", vim.lsp.buf.document_symbol, {})
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {})
 vim.keymap.set("n", "<leader>i", vim.lsp.buf.implementation, {})
 
-vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
+-- NoNeckPain
+vim.keymap.set("n", "<leader>nn", ":NoNeckPain<CR>")
+
+-- Execute run script
+vim.keymap.set("n", "<leader>nn", ":NoNeckPain<CR>")
+
+-- Use escape to go back to normal mode from the terminal mode
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
+
+vim.keymap.set("n", "<C-Shift-R", ":!bash run.sh<CR>")
 vim.wo.number = true
