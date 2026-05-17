@@ -100,40 +100,40 @@ return {
 		-- This function defines the default frontmatter for NEW notes.
 		-- It's executed only when a new note is created.
 		---@return table
-		note_frontmatter_func = function(note)
-			-- `note.metadata` contains any fields passed to `:ObsidianNew`
-			-- so we can merge them with our defaults.
-			local out = {
-				-- Set the creation and last updated dates.
-				created = os.date("%Y-%m-%d@%H:%M:%S"),
-				last_updated = os.date("%Y-%m-%d@%H:%M:%S"),
-			}
+		-- note_frontmatter_func = function(note)
+		-- 	-- `note.metadata` contains any fields passed to `:ObsidianNew`
+		-- 	-- so we can merge them with our defaults.
+		-- 	local out = {
+		-- 		-- Set the creation and last updated dates.
+		-- 		created = os.date("%Y-%m-%d@%H:%M:%S"),
+		-- 		last_updated = os.date("%Y-%m-%d@%H:%M:%S"),
+		-- 	}
 
-			-- Merge any metadata passed during note creation.
-			if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
-				for k, v in pairs(note.metadata) do
-					out[k] = v
-				end
-			end
-			return out
-		end,
+		-- 	-- Merge any metadata passed during note creation.
+		-- 	if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+		-- 		for k, v in pairs(note.metadata) do
+		-- 			out[k] = v
+		-- 		end
+		-- 	end
+		-- 	return out
+		-- end,
 
 		note_id_func = function(title)
 			return title
 		end,
 
 		-- This table defines callbacks that are triggered on certain events.
-		callbacks = {
-			-- This callback is triggered right before a note is written to disk.
-			-- -@param client obsidian.Client
-			-- -@param note obsidian.Note
-			pre_write_note = function(client, note)
-				-- This function will find the 'last_updated' field in the note's
-				-- frontmatter and update it with the current timestamp.
-				-- If the field doesn't exist, it will be added.
-				note:add_field("last_updated", os.date("%Y-%m-%d@%H:%M:%S"))
-			end,
-		},
+		-- callbacks = {
+		-- 	-- This callback is triggered right before a note is written to disk.
+		-- 	-- -@param client obsidian.Client
+		-- 	-- -@param note obsidian.Note
+		-- 	pre_write_note = function(client, note)
+		-- 		-- This function will find the 'last_updated' field in the note's
+		-- 		-- frontmatter and update it with the current timestamp.
+		-- 		-- If the field doesn't exist, it will be added.
+		-- 		note:add_field("last_updated", os.date("%Y-%m-%d@%H:%M:%S"))
+		-- 	end,
+		-- },
 
 		-- see below for full list of options 👇
 	},
