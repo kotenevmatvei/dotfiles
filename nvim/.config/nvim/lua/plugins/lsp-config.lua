@@ -37,6 +37,16 @@ return {
               },
             })
           end,
+          ["clangd"] = function()
+            lspconfig.clangd.setup({
+              capabilities = capabilities,
+              cmd = {
+                "clangd",
+                "--background-index",
+                "--query-driver=/usr/bin/gcc,/usr/bin/g++",
+              },
+            })
+          end,
         },
       })
     end,

@@ -1,7 +1,7 @@
 -- Enable absolute line numbers
 vim.opt.number = true
 -- Enable relative line numbers
-vim.opt.relativenumber = true
+-- vim.opt.relativenumber = true
 -- disable showmode, since already visible in lualine
 vim.opt.showmode = false
 -- and remove the unnecessary space
